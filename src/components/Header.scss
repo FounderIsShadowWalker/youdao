@@ -1,0 +1,30 @@
+.wrapper{
+    position: relative;
+    top: 0;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.headerItem{
+    position: relative;
+    display: inline-block;
+    color: #7c808c;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+}
+
+.headerItem:hover{
+    cursor: pointer;
+    color: #3086f2;
+}
+
+.headerSelectd{
+    border-bottom: 2px #3086f2 solid;
+    color: #3086f2;
+}
+

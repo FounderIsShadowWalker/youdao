@@ -1,0 +1,52 @@
+#shareInputWrapper {
+  position: relative;
+  background: #1F1F1F;
+  padding: 20px 50px 20px 50px;
+  width: 80%; }
+  #shareInputWrapper .imgWrapper {
+    position: relative;
+    background: #404040;
+    border-left: .2px solid #1F1F1F; }
+  #shareInputWrapper .imgContent {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px 3px 5px 3px; }
+    #shareInputWrapper .imgContent span {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      display: inline-block;
+      margin: 0 15px 5px 0; }
+      #shareInputWrapper .imgContent span i {
+        position: absolute;
+        right: 0px; }
+
+textarea {
+  resize: none;
+  background: #404040 !important;
+  border: 1px solid #000000 !important;
+  border-radius: 1px !important;
+  color: white !important; }
+
+#shareInputWrapper > div:nth-child(1) {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch; }
+
+.contentBorder {
+  border: 1px solid #000; }
+
+#shareInputWrapper .postButton {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px; }
+
+/*# sourceMappingURL=ShareInput.css.map */

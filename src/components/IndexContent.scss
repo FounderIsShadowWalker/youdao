@@ -1,0 +1,17 @@
+#IndexContentWrapper{
+  position: relative;
+  height: calc(100vh - 70px);
+  background: red;
+  .ant-carousel .slick-slide {
+    position: relative;
+    text-align: center;
+    height: calc(100vh - 70px);
+    line-height: calc(100vh - 70px);
+    background: #364d79;
+    overflow: hidden;
+  }
+  
+  .ant-carousel .slick-slide h3 {
+    color: #fff;
+  } 
+}
