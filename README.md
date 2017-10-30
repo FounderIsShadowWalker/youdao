@@ -2,14 +2,14 @@
 本来是想写一个有道词典的，结果突然写成了qq空间。
 
 
-##选择技术栈
+## 选择技术栈
 
 Antd mongodb koa2 dva sass
 
 后期通讯 (websocket or  socket.io)
 
 
-##目录结构
+## 目录结构
 + public
 
 	这里放静态文件 是node 的静态文件
@@ -70,7 +70,7 @@ Antd mongodb koa2 dva sass
 ## 来个截图吧
 ![qq_space](http://oymaq4uai.bkt.clouddn.com/qq_space_overview)
 
-##说点啥吧
+## 说点啥吧
 
 目前项目还没写完，距离一个成熟的成品更是相去甚远，做这个初衷的是提升自己的react的工程实践能力，希望大家能一起加入😊😊，我是喜欢编程的顺顺。
 
