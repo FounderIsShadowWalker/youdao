@@ -4,14 +4,21 @@ import { HOCModal } from '../components/HOCComponent';
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
 import IndexContent from '../components/IndexContent';
+import socket from '../socket';
+
 import Header from '../components/Header';
 import styles from './IndexPage.css';
 
 class IndexPage extends React.Component {
 
-  // componentDidMount() {
-  //   console.log(this.refs.child.getWrappedInstance(), 'child')
-  // };
+  componentDidMount() {
+    socket.on('message', (data) => {
+      console.log(data);
+    })
+
+    socket.emit('chat message', { name: 'shadow' });
+  };
+
   showLogin = () => {
     this.props.dispatch({
       type: 'modal/show',
@@ -31,6 +38,7 @@ class IndexPage extends React.Component {
   }
 
   render() {
+
     return (
       <div className={styles.normal}>
         <Header tags={['首页', '云笔记', '云协作', '下载', '会员', '企业版']} >
