@@ -1,0 +1,15 @@
+#dropDown {
+  position: relative;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 2px 0px 2px 5px;
+  cursor: pointer; }
+  #dropDown .item {
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  #dropDown .item:hover {
+    color: #cccccc; }
+
+/*# sourceMappingURL=Dropdown.css.map */

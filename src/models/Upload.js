@@ -11,20 +11,15 @@ export default {
 
     subscriptions: {
         setup({ dispatch, history }) {  // eslint-disable-line
+
         },
     },
 
     effects: {
         *postNote({ payload }, { call, put }) {  // eslint-disable-line
-            // yield put({ type: 'save' });
             var add = (async function () {
                 return await upload.upload(payload, 'light')
             })();
-
-            // add.then((value) => {
-            //     console.log(value);
-            //     //重置text 和图片
-            // })
 
             yield put({ type: 'clearPost' });
             yield put({ type: 'post/getPosts', payload: { username: payload.username } });

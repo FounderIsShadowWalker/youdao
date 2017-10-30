@@ -24,12 +24,12 @@ class LoginForm extends React.Component {
                         console.log('登录结果', result);
                         if (result.data.result === "登录成功") {
                             hashHistory.push(`/UserPage/${values.username}`);
+                            // hashHistory.push(`/UserPage/welcome`)
                         } else {
                             this.props.form.resetFields();
                             message.error('登录失败');
                         }
                     })
-
 
                 console.log('Received values of form: ', values);
             }

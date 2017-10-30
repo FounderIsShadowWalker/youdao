@@ -13,6 +13,7 @@ app.model(require('./models/Upload'));
 app.model(require('./models/Header'));
 app.model(require('./models/Modal'));
 app.model(require('./models/Post'));
+app.model(require('./models/QQnumber'));
 
 // 4. Router
 app.router(require('./router'));

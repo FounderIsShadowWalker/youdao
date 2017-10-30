@@ -3,6 +3,7 @@ $paddingLeft: 240px;
 body,html{
    margin: 0;
    padding: 0;
+   background: #1F1F1F;
 }
 .content{
     position: relative;
@@ -12,14 +13,28 @@ body,html{
         width: $paddingLeft;
         float: left;
         left: 0;
-        top: 0;
-        background: #1F1F1F;
-        height: 100vh;    
+        top: 0;   
     }
     .right{
-        position: relative;
-        background: #1F1F1F;
-        height: 100vh;  
-        padding: 20px 50px 20px 50px;
+        position: relative; 
+        padding: 20px 50px 0px 50px;
+        .searchWrapper{
+          position: absolute;
+          top: 20px;
+          right: 50px;
+        }
+        .ant-input{
+            background: #2E2E2E;
+            color: #ffffff;
+        }
     }
+}
+
+.ant-spin-nested-loading > div > .ant-spin{
+    position: fixed;
+    left:0; 
+    right:0;
+    top:0; 
+    bottom:0;
+    margin:auto;
 }

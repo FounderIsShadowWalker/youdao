@@ -46,6 +46,8 @@ function uploadFile(ctx, options) {
     let fileType = options.fileType;
 
     mkdirsSync(path.join(__dirname, `../${fileType}`));
+    fileMethod.clearFormData();
+
     return new Promise((resolve, reject) => {
         console.log('文件上传中...');
         let result = {
@@ -78,6 +80,7 @@ function uploadFile(ctx, options) {
                     message = Object.assign({}, message, fileMethod.dealFormDataValue(item));
                 }
             })
+
             console.log('文件上传结束');
             resolve(message);
         })

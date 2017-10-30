@@ -1,0 +1,34 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #1F1F1F; }
+
+.content {
+  position: relative;
+  padding-left: 240px; }
+  .content .left {
+    position: absolute;
+    width: 240px;
+    float: left;
+    left: 0;
+    top: 0; }
+  .content .right {
+    position: relative;
+    padding: 20px 50px 0px 50px; }
+    .content .right .searchWrapper {
+      position: absolute;
+      top: 20px;
+      right: 50px; }
+    .content .right .ant-input {
+      background: #2E2E2E;
+      color: #ffffff; }
+
+.ant-spin-nested-loading > div > .ant-spin {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto; }
+
+/*# sourceMappingURL=UserPage.css.map */

@@ -28,7 +28,17 @@ function RouterConfig({ history, app }) {
         require.ensure([], (require) => {
           cb(null, require('./routes/UserPage'));
         })
-      }
+      },
+
+      childRoutes: [{
+        path: 'welcome',
+        name: 'welcome',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            cb(null, require('../src/components/Modal'));
+          })
+        },
+      }]
     }
   ]
 

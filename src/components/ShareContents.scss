@@ -1,6 +1,61 @@
+$marginRight: 15px;
+
 #posts{
-    width: 80%;
-    height: 500px;
-    margin-top: 20px;
-    border: 1px solid #ffffff;
+    width: 65%;
+    .postWrapper{
+        padding: 15px 0px;
+        background: #2E2E2E;
+        margin: 20px 0px;
+        padding: 10px 20px 10px 20px;
+        .title{
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 5px 0px;
+            .textWrapper{
+                position: relative;
+                display: inline-block;
+                margin-left: 8px;
+                p.username{
+                    font-size: 15px;
+                    color: #fff;
+                }
+                p.time{
+                    font-size: 12px;
+                    color:#51646B;
+                }
+            }
+        }
+        .text{
+            padding: 6px 0px;
+            span{
+                color: #A6A6A6;
+                font-size: 18px;
+            }
+        }
+        .imgsWrapper{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+        img{
+            position: relative;
+            width: 150px;
+            height: 150px;    
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            display: inline-block;
+            margin: 0 $marginRight 5px 0;
+            background-image: url('../assets/psb.jpg');
+        }
+    }
+    }
+}
+
+.ant-avatar-lg {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
 }

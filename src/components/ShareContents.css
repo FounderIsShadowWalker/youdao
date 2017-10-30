@@ -1,0 +1,50 @@
+#posts {
+  width: 65%; }
+  #posts .postWrapper {
+    padding: 15px 0px;
+    background: #2E2E2E;
+    margin: 20px 0px;
+    padding: 10px 20px 10px 20px; }
+    #posts .postWrapper .title {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 5px 0px; }
+      #posts .postWrapper .title .textWrapper {
+        position: relative;
+        display: inline-block;
+        margin-left: 8px; }
+        #posts .postWrapper .title .textWrapper p.username {
+          font-size: 15px;
+          color: #fff; }
+        #posts .postWrapper .title .textWrapper p.time {
+          font-size: 12px;
+          color: #51646B; }
+    #posts .postWrapper .text {
+      padding: 6px 0px; }
+      #posts .postWrapper .text span {
+        color: #A6A6A6;
+        font-size: 18px; }
+    #posts .postWrapper .imgsWrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: nowrap; }
+      #posts .postWrapper .imgsWrapper img {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        display: inline-block;
+        margin: 0 15px 5px 0;
+        background-image: url("../assets/psb.jpg"); }
+
+.ant-avatar-lg {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%; }
+
+/*# sourceMappingURL=ShareContents.css.map */

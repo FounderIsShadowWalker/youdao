@@ -15,3 +15,11 @@ export function register(options) {
 export function getPosts(options) {
   return request('/api/getPost', options);
 }
+
+export function getUsers(options) {
+  return request('/api/getUsers', options);
+}
+
+export function addFriend(options) {
+  return request('/api/addFriend', options);
+}

@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var User = require('../model/User');
-var db = require('../utils/mongodb');
 
 const sleep = async (ms) => {
     return new Promise((resolve, reject) => {
@@ -28,6 +27,11 @@ module.exports = {
         let result = await User.saveModel({ userName, password, email, phone } = ctx.request.body);
 
 
+        ctx.body = result;
+    },
+
+    async getUsers(ctx, next) {
+        let result = await User.getUsers({ username } = ctx.request.body);
         ctx.body = result;
     }
 }

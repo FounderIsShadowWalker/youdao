@@ -26,6 +26,9 @@ class UploadAvator extends React.Component {
 
         var file = this.refs.uploadImg.files[0];
         var reader = new FileReader();
+        var fileType = file.type.match(/image\/(\w+)/)[1];
+        console.log(fileType);
+
         //可以compose 先简单写一下
         try {
             [this.checkFile(file), this.checkFileList].map((fun, index) => {
