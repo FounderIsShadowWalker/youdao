@@ -37,8 +37,7 @@ UserSchema.statics = {
 
     async saveMessage({ username, text, imgs, time }) {
         let message = { text, imgs, time };
-
-        db.model('User').update({ username }, { $push: { messages: message } }, (err, doc) => {
+        return await db.model('User').update({ username }, { $push: { messages: message } }, (err, doc) => {
             if (err) {
                 console.log(err);
             }
@@ -53,8 +52,23 @@ UserSchema.statics = {
                 }
             })
 
+
         result[0].messages.reverse();
         result[0].messages = result[0].messages.slice(index, index + size);
+        return result;
+    },
+
+    async getLatestPost(username) {
+        let result = await db.model('User')
+            .find({ username }, (err, doc) => {
+                if (err) {
+                    console.log(err);
+                }
+            })
+
+        result[0].messages.reverse();
+        result[0].messages = result[0].messages.slice(0, 1);
+
         return result;
     },
 

@@ -16,6 +16,10 @@ export function getPosts(options) {
   return request('/api/getPost', options);
 }
 
+export function getLatestPosts(options) {
+  return request('/api/getLatestPosts', options);
+}
+
 export function getUsers(options) {
   return request('/api/getUsers', options);
 }

@@ -35,7 +35,7 @@ function RouterConfig({ history, app }) {
         name: 'welcome',
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
-            cb(null, require('../src/components/Modal'));
+            cb(null, require('./routes/subTest'));
           })
         },
       }]

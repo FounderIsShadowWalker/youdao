@@ -12,8 +12,12 @@ const io = require('socket.io')(server);
 
 
 io.on('connect', (socket) => {
-    socket.emit('message', { hello: 'world' });
-    socket.on('chat message', (data) => {
+    // socket.emit('message', { hello: 'world' });
+    // socket.on('chat message', (data) => {
+    //     console.log(data);
+    // });
+
+    socket.on('message', (data) => {
         console.log(data);
     });
 

@@ -1,4 +1,5 @@
 import upload from '../utils/upload';
+import socket from '../socket';
 
 export default {
 
@@ -17,12 +18,14 @@ export default {
 
     effects: {
         *postNote({ payload }, { call, put }) {  // eslint-disable-line
-            var add = (async function () {
-                return await upload.upload(payload, 'light')
-            })();
+            // 通知新用户   
+            // console.log('post message', payload);
+            // socket.emit('message', payload);
+            yield upload.upload(payload, 'light');   //上传
+            yield put({ type: 'clearPost' });        //清除剪贴板
 
-            yield put({ type: 'clearPost' });
-            yield put({ type: 'post/getPosts', payload: { username: payload.username } });
+            //yield put({ type: 'post/getPosts', payload: { username: payload.username } });  //刷新post
+            yield put({ type: 'post/insertPosts', payload: { username: payload.username } });
         }
     },
 

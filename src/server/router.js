@@ -10,8 +10,10 @@ router.post('/login', login.login);
 router.post('/register', login.resiter);
 router.post('/light', light.upload);
 router.post('/getPost', getPost.getPost);
+router.post('/getLatestPosts', getPost.getLatestPost);
 router.post('/getUsers', login.getUsers);
 router.post('/addFriend', addFriend.addFriend);
+
 
 router.get('/', (ctx) => {
     ctx.body = 'hello';

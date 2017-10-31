@@ -9,6 +9,9 @@
 # server dependencies
 /src/server/node_modules
 
+# upload img
+/src/server/img
+
 # misc
 .DS_Store
 npm-debug.log*

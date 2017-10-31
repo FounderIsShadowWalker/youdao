@@ -6,6 +6,7 @@ import { Icon, Button } from 'antd';
 import classNames from 'classnames';
 import './ShareInput.scss';
 
+
 class ShareInput extends React.Component {
     static defaultProps = {
         text: ''

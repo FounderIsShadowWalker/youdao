@@ -76,6 +76,8 @@ class UserPage extends React.Component {
                         </div>
                     </div>
                 </Spin>
+
+                {this.props.children}
             </div>
         )
 

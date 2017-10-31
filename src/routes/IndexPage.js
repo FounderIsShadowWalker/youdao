@@ -12,11 +12,11 @@ import styles from './IndexPage.css';
 class IndexPage extends React.Component {
 
   componentDidMount() {
-    socket.on('message', (data) => {
-      console.log(data);
-    })
+    // socket.on('message', (data) => {
+    //   console.log(data);
+    // })
 
-    socket.emit('chat message', { name: 'shadow' });
+    // socket.emit('chat message', { name: 'shadow' });
   };
 
   showLogin = () => {
