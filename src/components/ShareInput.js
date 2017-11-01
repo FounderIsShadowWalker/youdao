@@ -2,8 +2,9 @@ import React from 'react';
 import { Input } from 'antd';
 import UploadImg from './UploadImg';
 import { connect } from 'dva';
-import { Icon, Button } from 'antd';
+import { Icon, Button, message } from 'antd';
 import classNames from 'classnames';
+import socket from '../socket';
 import './ShareInput.scss';
 
 
@@ -22,14 +23,21 @@ class ShareInput extends React.Component {
     }
 
     postNote = () => {
-        this.props.dispatch({
-            type: 'upload/postNote',
-            payload: {
-                username: this.props.username,
-                text: this.props.text,
-                fileList: this.props.fileList
-            }
-        })
+        new Promise((resolve, reject) => {
+            this.props.dispatch({
+                type: 'upload/postNote',
+                payload: {
+                    username: this.props.username,
+                    text: this.props.text,
+                    fileList: this.props.fileList,
+                    resolve: resolve
+                }
+            });
+        }).then(() => {
+            socket.emit('message', this.props.username, () => {
+                message.info(`${this.props.username} 有新动态`);
+            });
+        });
     }
 
     sendText = (e) => {

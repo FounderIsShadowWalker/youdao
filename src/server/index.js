@@ -8,23 +8,11 @@ var cors = require('koa2-cors');
 var app = new koa();
 const server = require('http').createServer(app.callback());
 const io = require('socket.io')(server);
-
+var controller = require('./controllerIo');
 
 
 io.on('connect', (socket) => {
-    // socket.emit('message', { hello: 'world' });
-    // socket.on('chat message', (data) => {
-    //     console.log(data);
-    // });
-
-    socket.on('message', (data) => {
-        console.log(data);
-    });
-
-    socket.on('disconnect', () => {
-        console.log('user gg');
-        socket.emit('user disconnected');
-    })
+    controller(socket);
 });
 
 

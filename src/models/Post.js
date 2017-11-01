@@ -1,4 +1,7 @@
 import { getPosts, getLatestPosts } from '../services/index';
+import socket from '../socket';
+import { message } from 'antd';
+
 const size = 5;
 
 export default {
@@ -16,6 +19,18 @@ export default {
 
     subscriptions: {
         setup({ dispatch, history }) {  // eslint-disable-line
+            return history.listen(({ pathname, query }) => {
+
+                if (pathname.indexOf('/UserPage') >= 0) {
+                    console.log('注册socket事件');
+                    socket.on('clientMessage', (data, postValue) => {
+                        //console.log(`我收到了新消息: ${data}`, test);
+                        console.log('正不正常 你心里没有点b数吗', postValue);
+                        dispatch({ type: 'insertPost', payload: { data: postValue } });
+                        message.info(`${data}发送了新消息`);
+                    })
+                }
+            })
         },
     },
 
@@ -51,6 +66,8 @@ export default {
                 },
                 body: JSON.stringify(payload)
             })
+
+            console.log('正常的insertPost', postValue);
 
             yield put({ type: 'insertPost', payload: postValue });
         }

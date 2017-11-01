@@ -30,6 +30,14 @@ function RouterConfig({ history, app }) {
         })
       },
 
+      indexRoute: {
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            cb(null, require('./components/UserSpace'));
+          })
+        },
+      },
+
       childRoutes: [{
         path: 'welcome',
         name: 'welcome',

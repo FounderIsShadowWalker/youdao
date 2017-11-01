@@ -26,6 +26,18 @@ export default {
 
             //yield put({ type: 'post/getPosts', payload: { username: payload.username } });  //刷新post
             yield put({ type: 'post/insertPosts', payload: { username: payload.username } });
+
+            payload.resolve();
+            // yield call(new Promise((resolve, reject) => {
+            //     setTimeout(() => {
+            //         socket.emit('message', payload.username, () => {
+            //             message.info(`${this.props.username} 有新动态`);
+            //         });
+            //         resolve();
+            //     }, 500);
+            // }));
+
+
         }
     },
 

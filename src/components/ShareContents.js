@@ -6,6 +6,7 @@ import './ShareContents.scss';
 class ShareContent extends React.Component {
 
     componentDidMount() {
+        console.log('getPost', this.props.username);
         this.props.dispatch({
             type: 'post/getPosts',
             payload: {
@@ -17,6 +18,8 @@ class ShareContent extends React.Component {
     render() {
         const { data } = this.props.data;
         const { username } = this.props;
+
+        console.log(data);
 
         const postItems = data.map((item, index) => {
             return <div className="postWrapper" key={index}>

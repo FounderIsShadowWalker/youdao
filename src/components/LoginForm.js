@@ -1,8 +1,9 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
-import './LoginForm.scss'
 import { login, register } from '../services/index'
 import { hashHistory } from 'dva/router';
+import socket from '../socket';
+import './LoginForm.scss'
 
 const FormItem = Form.Item;
 
@@ -24,6 +25,9 @@ class LoginForm extends React.Component {
                         console.log('登录结果', result);
                         if (result.data.result === "登录成功") {
                             hashHistory.push(`/UserPage/${values.username}`);
+                            socket.emit('login', values.username, () => {
+                                message.info(`${values.username} 上线了`);
+                            })
                             // hashHistory.push(`/UserPage/welcome`)
                         } else {
                             this.props.form.resetFields();

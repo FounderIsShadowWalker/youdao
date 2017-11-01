@@ -4,9 +4,7 @@
 
 ## 选择技术栈
 
-Antd mongodb koa2 dva sass
-
-后期通讯 (websocket or  socket.io)
+Antd mongodb koa2 dva sass socket.io
 
 
 ## 目录结构
@@ -25,19 +23,19 @@ Antd mongodb koa2 dva sass
 			
 	+ models				 
 	  
-	  模型层(属于redux中的action 和 reducer 的合集)
+	  		模型层(属于redux中的action 和 reducer 的合集)
 	
 	+ routes
 	
-		路由层，相当于放置了各个路由的首页
+			路由层，相当于放置了各个路由的首页
 		
 	+ services 
 		
-		服务层，放置对后台所有的请求
+			服务层，放置对后台所有的请求
 		
 	+ utils
 	
-		工具层，放置一些通用方法
+			工具层，放置一些通用方法
 	
 	+ server
 	  
@@ -52,9 +50,14 @@ Antd mongodb koa2 dva sass
 	  + model
 	  		
 	  		mongo的Model 所有对数据库的操作挂载在Model的静态方法下
+
 	  + utils
+
 	  		node 层复用方法，比如解析上传buffer 获取数据库实例
 	  	
+	  + controller
+
+			 放置socket.io 的socket事件 
 
 ## 项目启动
 

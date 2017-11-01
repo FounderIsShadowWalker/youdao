@@ -12,6 +12,10 @@
 # upload img
 /src/server/img
 
+# vscode debud
+/.vscode
+
 # misc
 .DS_Store
 npm-debug.log*
+.gitignore

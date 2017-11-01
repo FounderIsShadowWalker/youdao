@@ -16,7 +16,7 @@ class IndexPage extends React.Component {
     //   console.log(data);
     // })
 
-    // socket.emit('chat message', { name: 'shadow' });
+    socket.emit('message Test', { name: 'shadow' });
   };
 
   showLogin = () => {
