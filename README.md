@@ -10,16 +10,16 @@ Antd mongodb koa2 dva sass socket.io
 ## 目录结构
 + public
 
-	这里放静态文件 是node 的静态文件
+		这里放静态文件 是node 的静态文件
 	
 + src
 	+ assets
 		
-		打包文件
+			打包文件
 	
 	+ components
 		
-		项目中的组建(包括高阶组件 所有的高阶组件都放在HOCComponent 下)
+			项目中的组建(包括高阶组件 所有的高阶组件都放在HOCComponent 下)
 			
 	+ models				 
 	  

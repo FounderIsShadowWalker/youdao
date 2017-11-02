@@ -66,9 +66,12 @@ function uploadFile(ctx, options) {
             let message = {
                 text: {},
                 imgs: [],
-                time: moment().format('YYYY/MM/DD h:mm:ss'),
+                time: new Date().toLocaleString(),
                 success: true
             };
+
+            console.log(new Date());
+
             let set = buffer.toString().split(/------WebKitFormBoundary(?:.+)?\r\n/), length = set.length;
             set = set.slice(1, length - 1);
 

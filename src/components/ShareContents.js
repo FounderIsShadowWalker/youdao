@@ -6,28 +6,35 @@ import './ShareContents.scss';
 class ShareContent extends React.Component {
 
     componentDidMount() {
-        console.log('getPost', this.props.username);
+        this.props.dispatch({
+            type: 'post/clearInsert'
+        })
+
         this.props.dispatch({
             type: 'post/getPosts',
             payload: {
-                username: this.props.username
+                username: this.props.username,
             }
         })
     }
 
     render() {
         const { data } = this.props.data;
-        const { username } = this.props;
+        const { username, insert } = this.props;
 
-        console.log(data);
+        //insert tag
+
+        const insertTag = insert && <div className="insertTag">有人发来了新消息</div>
+
 
         const postItems = data.map((item, index) => {
             return <div className="postWrapper" key={index}>
                 <div className='title'>
                     <Avatar size="large" icon="user" />
                     <div className='textWrapper'>
-                        <p className='username'> {username} </p>
-                        <p className='time'> {item.time}</p>
+                        <p className='username'> {item.username} </p>
+                        <p className='time'>
+                            {item.time.replace(/T/, ' ').replace(/\..+/, '')}</p>
                     </div>
                 </div>
                 <div className="text">
@@ -45,6 +52,9 @@ class ShareContent extends React.Component {
         return (
             <div id='posts'>
                 {
+                    insertTag
+                }
+                {
                     postItems
                 }
             </div>
@@ -54,7 +64,8 @@ class ShareContent extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        data: state.post
+        data: state.post,
+        insert: state.post.insert
     };
 }
 

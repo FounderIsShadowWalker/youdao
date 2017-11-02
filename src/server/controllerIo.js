@@ -50,7 +50,7 @@ module.exports = function socketHandler(socket) {
 
         for (let user of users) {
             console.log(user.username);
-            user.emit('clientMessage', username, userPost);
+            user.emit('clientMessage', username);
         }
         //socket.broadcast.emit('message', `${username}发送了消息，看看是不是你丫的好友`);
     });

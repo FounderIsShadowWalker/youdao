@@ -6,10 +6,11 @@ import { Spin, Input } from 'antd';
 import { connect } from 'dva';
 
 const Search = Input.Search;
+let throttleId = null;
+
 class UserSpace extends React.Component {
 
     componentDidMount() {
-        console.log(this.props.params, '来自router的参数');
         window.addEventListener('scroll', this.orderScroll)
     };
 

@@ -36,7 +36,7 @@ UserSchema.statics = {
     },
 
     async saveMessage({ username, text, imgs, time }) {
-        let message = { text, imgs, time };
+        let message = { text, imgs, username, time };
         return await db.model('User').update({ username }, { $push: { messages: message } }, (err, doc) => {
             if (err) {
                 console.log(err);
@@ -44,18 +44,35 @@ UserSchema.statics = {
         })
     },
 
+
     async getMessage(username, index, size) {
-        let result = await db.model('User')
-            .find({ username }, (err, doc) => {
-                if (err) {
-                    console.log(err);
+        let users = await db.model('User').find({ username });
+        let friendList = users[0].friendList;
+        let userMessage = users[0].messages;
+
+        await new Promise((resolve, reject) => {
+            friendList.map(async (username, index) => {
+
+                let friend = await db.model('User').find({ username });
+                let friendMessage = friend[0].messages;
+
+                userMessage = userMessage.concat(friendMessage);
+
+                if (index === friendList.length - 1) {
+                    resolve();
                 }
             })
+        })
 
 
-        result[0].messages.reverse();
-        result[0].messages = result[0].messages.slice(index, index + size);
-        return result;
+
+        let sortBy = (field) => (a, b) => { return new Date(b[field]) - new Date(a[field]) }
+
+        userMessage = userMessage.sort(sortBy('time'));
+
+        users[0].messages = userMessage.slice(index, index + size);
+
+        return users;
     },
 
     async getLatestPost(username) {

@@ -1,7 +1,25 @@
 import { Menu, Icon, Button } from 'antd';
+import { hashHistory } from 'dva/router';
+import { connect } from 'dva';
+
 const SubMenu = Menu.SubMenu;
 
-export default class UserMenu extends React.Component {
+class UserMenu extends React.Component {
+
+    userSpace = () => {
+        this.props.dispatch({
+            type: 'post/clearInsert'
+        });
+
+        this.props.dispatch({
+            type: 'post/getPosts',
+            payload: {
+                username: this.props.username,
+                reload: true
+            }
+        });
+
+    }
 
     render() {
         return (
@@ -15,7 +33,7 @@ export default class UserMenu extends React.Component {
                 >
                     <Menu.Item key="1">
                         <Icon type="pie-chart" />
-                        <span>好友动态</span>
+                        <span onClick={this.userSpace}>好友动态</span>
                     </Menu.Item>
                     <Menu.Item key="2">
                         <Icon type="desktop" />
@@ -48,3 +66,4 @@ export default class UserMenu extends React.Component {
 }
 
 
+export default connect()(UserMenu);

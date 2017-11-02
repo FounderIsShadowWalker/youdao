@@ -10,7 +10,7 @@ import UserSpace from '../components/UserSpace';
 import './UserPage.scss';
 
 const Search = Input.Search;
-let throttleId = null;
+
 
 class UserPage extends React.Component {
 
@@ -24,15 +24,13 @@ class UserPage extends React.Component {
                 <Spin tip="Loading..." spinning={spin}>
                     <div className='content'>
                         <div className='left'>
-                            <UserMenu />
+                            <UserMenu {...this.props.params} />
                         </div>
                         <div className='right'>
                             {this.props.children}
                         </div>
                     </div>
                 </Spin>
-
-
             </div>
         )
 

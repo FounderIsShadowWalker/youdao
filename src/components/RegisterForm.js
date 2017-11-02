@@ -29,6 +29,9 @@ class RegistrationForm extends React.Component {
                         console.log('注册结果', result);
                         if (result.data.result === "注册成功") {
                             hashHistory.push(`/UserPage/${values.username}`);
+                            socket.emit('login', values.username, () => {
+                                message.info(`${values.username} 上线了`);
+                            })
                         }
                         else {
                             //this.props.form.resetFields();

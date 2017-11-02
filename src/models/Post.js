@@ -12,6 +12,7 @@ export default {
         index: 0,
         size: size,
         spin: false,
+        insert: false,
         data: [
 
         ]
@@ -22,11 +23,10 @@ export default {
             return history.listen(({ pathname, query }) => {
 
                 if (pathname.indexOf('/UserPage') >= 0) {
-                    console.log('注册socket事件');
-                    socket.on('clientMessage', (data, postValue) => {
+                    socket.on('clientMessage', (data) => {
                         //console.log(`我收到了新消息: ${data}`, test);
-                        console.log('正不正常 你心里没有点b数吗', postValue);
-                        dispatch({ type: 'insertPost', payload: { data: postValue } });
+                        //dispatch({ type: 'newPostHint', payload: { data } });     //不要插入了 提示就好了
+                        dispatch({ type: 'setInsert' });
                         message.info(`${data}发送了新消息`);
                     })
                 }
@@ -53,7 +53,13 @@ export default {
                 body: JSON.stringify(queryBody)
             })
 
-            yield put({ type: 'savePost', payload: postValue });
+            if (payload.reload) {
+                yield put({ type: 'reloadPost', payload: postValue });
+            } else {
+                yield put({ type: 'savePost', payload: postValue });
+            }
+
+            yield put({ type: 'clearSpin' });
         },
 
         //这是获取最新插入的那条消息
@@ -66,8 +72,6 @@ export default {
                 },
                 body: JSON.stringify(payload)
             })
-
-            console.log('正常的insertPost', postValue);
 
             yield put({ type: 'insertPost', payload: postValue });
         }
@@ -87,6 +91,15 @@ export default {
             })
         },
 
+        reloadPost(state, { payload }) {
+            const { data } = payload;
+            return Object.assign({}, state, {
+                data: [...data[0].messages],
+                index: state.data.length + state.size,
+                spin: false
+            })
+        },
+
         setSpin(state) {
             return Object.assign({}, state, {
                 spin: true
@@ -100,7 +113,25 @@ export default {
                 index: state.data.length + 1,
                 spin: false
             })
-        }
+        },
+        clearInsert(state) {
+            return Object.assign({}, state, {
+                insert: false,
+                index: 0,
+                spin: true
+            })
+        },
+        setInsert(state) {
+            return Object.assign({}, state, {
+                insert: true,
+                spin: false
+            })
+        },
+        clearSpin(state) {
+            return Object.assign({}, state, {
+                spin: false
+            })
+        },
     },
 
 };
