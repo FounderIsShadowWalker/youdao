@@ -6,6 +6,10 @@ const SubMenu = Menu.SubMenu;
 
 class UserMenu extends React.Component {
 
+    componentDidMount() {
+        console.log(this.props.params);
+    }
+
     userSpace = () => {
         this.props.dispatch({
             type: 'post/clearInsert'
@@ -19,6 +23,11 @@ class UserMenu extends React.Component {
             }
         });
 
+    }
+
+
+    modifyUserInfo = () => {
+        hashHistory.push(`/UserPage/${this.props.username}/userInfo`);
     }
 
     render() {
@@ -49,7 +58,7 @@ class UserMenu extends React.Component {
                     </Menu.Item>
                     <Menu.Item key="5">
                         <Icon type="setting" />
-                        <span>个人设置</span>
+                        <span onClick={this.modifyUserInfo}>个人设置</span>
                     </Menu.Item>
                     <SubMenu key="sub2" title={<span><Icon type="appstore" /><span> 游戏应用</span></span>}>
                         <Menu.Item key="9"> LOL </Menu.Item>

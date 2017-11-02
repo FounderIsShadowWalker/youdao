@@ -26,7 +26,6 @@ class RegistrationForm extends React.Component {
                     body: JSON.stringify(values)
                 })
                     .then((result) => {
-                        console.log('注册结果', result);
                         if (result.data.result === "注册成功") {
                             hashHistory.push(`/UserPage/${values.username}`);
                             socket.emit('login', values.username, () => {
@@ -34,7 +33,6 @@ class RegistrationForm extends React.Component {
                             })
                         }
                         else {
-                            //this.props.form.resetFields();
                             message.error('用户名被占用');
                         }
                     })

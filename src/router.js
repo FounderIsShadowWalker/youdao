@@ -39,11 +39,11 @@ function RouterConfig({ history, app }) {
       },
 
       childRoutes: [{
-        path: 'welcome',
-        name: 'welcome',
+        path: 'userInfo',
+        name: 'userInfo',
         getComponent(nextState, cb) {
           require.ensure([], (require) => {
-            cb(null, require('./routes/subTest'));
+            cb(null, require('./components/UserInfo'));
           })
         },
       }]

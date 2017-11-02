@@ -32,7 +32,7 @@ class UserSpace extends React.Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener(this.orderScroll);
+        window.removeEventListener('scroll', this.orderScroll);
     }
 
     showDropDown = (e) => {
