@@ -1,5 +1,11 @@
 #posts {
   width: 65%; }
+  #posts .insertTag {
+    color: red;
+    text-align: center;
+    font-size: 15px;
+    border: 1px solid #404040;
+    padding: 7px 0; }
   #posts .postWrapper {
     padding: 15px 0px;
     background: #2E2E2E;

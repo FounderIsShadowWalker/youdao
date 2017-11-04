@@ -6,22 +6,20 @@ const SubMenu = Menu.SubMenu;
 
 class UserMenu extends React.Component {
 
-    componentDidMount() {
-        console.log(this.props.params);
-    }
-
     userSpace = () => {
-        this.props.dispatch({
-            type: 'post/clearInsert'
-        });
+        // this.props.dispatch({
+        //     type: 'post/clearInsert'
+        // });
 
-        this.props.dispatch({
-            type: 'post/getPosts',
-            payload: {
-                username: this.props.username,
-                reload: true
-            }
-        });
+        // this.props.dispatch({
+        //     type: 'post/getPosts',
+        //     payload: {
+        //         username: this.props.username,
+        //         reload: true
+        //     }
+        // });
+
+        hashHistory.push(`/UserPage/${this.props.username}`);
 
     }
 
