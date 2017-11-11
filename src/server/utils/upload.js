@@ -67,11 +67,11 @@ function uploadFile(ctx, options) {
                 text: {},
                 imgs: [],
                 time: new Date().toLocaleString(),
+                remarks: [],
                 success: true
             };
 
             console.log(new Date());
-
             let set = buffer.toString().split(/------WebKitFormBoundary(?:.+)?\r\n/), length = set.length;
             set = set.slice(1, length - 1);
 
@@ -85,6 +85,7 @@ function uploadFile(ctx, options) {
             })
 
             console.log('文件上传结束');
+            console.log(message);
             resolve(message);
         })
     })

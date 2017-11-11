@@ -42,21 +42,118 @@ $marginRight: 15px;
             }
         }
         .imgsWrapper{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: nowrap;
-        img{
-            position: relative;
-            width: 150px;
-            height: 150px;    
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            display: inline-block;
-            margin: 0 $marginRight 5px 0;
-            background-image: url('../assets/psb.jpg');
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: nowrap;
+            img{
+                position: relative;
+                width: 150px;
+                height: 150px;    
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                display: inline-block;
+                margin: 0 $marginRight 5px 0;
+                background-image: url('../assets/psb.jpg');
+            }
         }
-    }
+        .remarkWrapper{
+            position: relative;
+            height: 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            .iconsWrapper{
+                position: relative;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                span{
+                    width: 24px;
+                    height: 24px;
+                    background-size: 24px 24px;
+                    display: inline-block;
+                    margin-left: 55px;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                span:nth-child(1){
+                    background-image: url('../assets/praise.png');
+                }
+                span:nth-child(2){
+                    background-size: 23px 23px;
+                    background-image: url('../assets/message.png');
+                }
+                span:nth-child(3){
+                    background-image: url('../assets/resend.png');
+                }
+            }
+            span.scanText{
+                position: absolute;
+                display: block;
+                left: 0px;
+                bottom: 0px;
+                margin: auto;
+                color: gray;
+            }
+        }
+        .remarkPanel{
+            position: relative;
+            .remarkTexts{
+                padding: 3px 0px;
+                color: white;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                div.spanWrapper{
+                    position: relative;
+                    span.text, p.time{
+                        color: #A6A6A6;
+                        font-size: 12px;
+                    }
+                    span.rusername, p.time{
+                        margin-left: 5px;
+                    }
+                }
+            }
+            .remarkTexts:nth-child(1){
+                border-top: 2px solid #1F1F1F;
+                margin-top: 10px;
+            }
+        }
+        .remarkInput{
+            position: relative;
+            min-height: 30px;
+            line-height: 30px;
+            margin-top: 16px;
+            .ant-input:focus{
+                border: 1px solid #1F1F1F;
+            }
+            .ant-input{
+                padding-left: 10px !important;
+                border: 1px solid #1F1F1F;
+            }
+            .ant-input:hover{
+                border: 1px solid #1F1F1F;
+            }
+            .textAreaWrapper{
+                position: relative;
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+                div{
+                    display: flex;
+                    justify-content: flex-end;
+                    padding: 7px 5px 0 5px;
+                    .ant-btn {
+                        background: #808080 !important;
+                        color: white !important;
+                        border: 1px solid #1F1F1F !important;
+                    }
+                }
+            }
+        }
     }
 }
 

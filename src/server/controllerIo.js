@@ -38,6 +38,12 @@ module.exports = function socketHandler(socket) {
         cb();
     })
 
+    socket.on('remark', async (username, rusername, cb) => {
+        console.log('收到评论消息', username, rusername);
+        let user = onlineUsers.getUser(username);
+        user.emit('clientRemark', rusername, username);
+    });
+
     socket.on('message', async (username, cb) => {
         console.log(`${username}发送了消息`);
         //给所有人发送 username 新发送的消息

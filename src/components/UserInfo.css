@@ -1,0 +1,58 @@
+#userInfo .spanWrapper {
+  position: relative;
+  height: 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #FAFAFA;
+  padding-top: 10px; }
+  #userInfo .spanWrapper span {
+    position: relative;
+    font-size: 20px;
+    height: 100%;
+    display: inline-block; }
+  #userInfo .spanWrapper span:before {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    width: 100%;
+    height: 3px;
+    background: #DFDFDF; }
+#userInfo .contentWrapper {
+  position: relative;
+  padding: 20px 10px 0 10px; }
+  #userInfo .contentWrapper .ant-form-item-label label {
+    color: white; }
+  #userInfo .contentWrapper .ant-form-item-label {
+    text-align: center; }
+  #userInfo .contentWrapper textarea#introduce {
+    border: 1px solid #d9d9d9 !important; }
+  #userInfo .contentWrapper textarea#introduce:focus {
+    outline: none !important; }
+  #userInfo .contentWrapper span.ant-radio + span {
+    color: white !important; }
+  #userInfo .contentWrapper .ant-form-item:last-child {
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 30px; }
+  #userInfo .contentWrapper .buttonGroup {
+    position: relative;
+    width: 50%;
+    text-align: center; }
+    #userInfo .contentWrapper .buttonGroup .ant-btn {
+      padding: 0 30px; }
+  #userInfo .contentWrapper .avator {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 170px;
+    height: 170px;
+    background-size: 170px 170px;
+    display: flex;
+    justify-content: center; }
+    #userInfo .contentWrapper .avator .ant-btn {
+      position: absolute;
+      bottom: -50px;
+      padding: 0 20px;
+      display: inline-block; }
+
+/*# sourceMappingURL=UserInfo.css.map */

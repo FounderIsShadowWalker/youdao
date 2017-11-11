@@ -10,7 +10,7 @@ var UserSchema = new Schema({
     phone: String,
     email: String,
     friendList: [],
-    messages: []
+    messages: [],
     //posts : [{type: Schema.Types.ObjectId, ref:'Post'}]
 })
 
@@ -35,8 +35,8 @@ UserSchema.statics = {
         return { result: '被占用了' }
     },
 
-    async saveMessage({ username, text, imgs, time }) {
-        let message = { text, imgs, username, time };
+    async saveMessage({ username, text, imgs, time, remarks }) {
+        let message = { text, imgs, username, time, remarks };
         return await db.model('User').update({ username }, { $push: { messages: message } }, (err, doc) => {
             if (err) {
                 console.log(err);
@@ -110,13 +110,44 @@ UserSchema.statics = {
         if (exist.length == 0) {
             await db.model('User')
                 .update({ username }, { $push: { friendList: addFirend } }, (err, doc) => {
-                    if (err, doc) {
-                        console.log(doc);
+                    if (err) {
+                        console.log(err);
                     }
                 })
 
         }
         return exist.length == 0 ? { data: '添加好友成功' } : { data: '好友已存在好友列表中' };
+    },
+
+    async saveRemark({ username, rusername, text, time }) {
+        let users = await db.model('User').find({ username });
+        let index = 0;
+        let userMessage = users[0].messages;
+        userMessage.map((message, i) => {
+            if (message.time === time) {
+                index = i;
+            }
+        })
+
+        userMessage[index].remarks.push({
+            username,
+            rusername,
+            text,
+            time: new Date().toLocaleString()
+        })
+
+        let result = await new Promise((resolve, reject) => {
+            db.model('User').update({ username }, { $set: { messages: userMessage } }, (err, doc) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    resolve('true')
+                }
+            })
+        });
+
+        return result;
+
     }
 };
 

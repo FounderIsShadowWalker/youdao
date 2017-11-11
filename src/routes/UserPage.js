@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../components/Header';
 import UserMenu from '../components/UserMenu';
 import ShareInput from '../components/ShareInput';
-import ShareContent from '../components/ShareContents';
 import { connect } from 'dva';
 import { Spin, Input } from 'antd';
 import DropDown from '../components/Dropdown';

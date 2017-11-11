@@ -1,6 +1,7 @@
 import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, message } from 'antd';
 import { login, register } from '../services/index'
 import { hashHistory } from 'dva/router';
+import socket from '../socket';
 
 const FormItem = Form.Item;
 const Option = Select.Option;

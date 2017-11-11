@@ -1,4 +1,4 @@
-import { getPosts, getLatestPosts } from '../services/index';
+import { getPosts, getLatestPosts, saveRemark } from '../services/index';
 import socket from '../socket';
 import { message } from 'antd';
 
@@ -28,6 +28,11 @@ export default {
                         //dispatch({ type: 'newPostHint', payload: { data } });     //不要插入了 提示就好了
                         dispatch({ type: 'setInsert' });
                         message.info(`${data}发送了新消息`);
+                    })
+
+                    socket.on('clientRemark', (data, username) => {
+                        dispatch({ type: 'setInsert' });
+                        message.info(`${data}评论了你`);
                     })
                 }
             })
@@ -74,6 +79,30 @@ export default {
             })
 
             yield put({ type: 'insertPost', payload: postValue });
+        },
+
+        *saveRemark({ payload }, { call, put, select }) {
+            let { username, rusername, time, text } = payload;
+
+            yield saveRemark({
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+
+            yield put({
+                type: 'setRemark', payload: {
+                    username,
+                    rusername,
+                    time,
+                    text
+                }
+            });
+
+            payload.resolve();
         }
     },
 
@@ -132,6 +161,22 @@ export default {
                 spin: false
             })
         },
-    },
+        setRemark(state, { payload }) {
+            let { data } = state, { time } = payload, index = 0;
 
+            data.map((message, i) => {
+                if (message.time === time) {
+                    index = i;
+                }
+            })
+
+            data[index].remarks.push(payload);
+
+            message.info('评论成功');
+
+            return Object.assign({}, state, {
+                data
+            })
+        }
+    }
 };

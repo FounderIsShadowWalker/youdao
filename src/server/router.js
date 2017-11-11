@@ -3,6 +3,7 @@ const login = require('./controller/login');
 const light = require('./controller/light');
 const getPost = require('./controller/getPost');
 const addFriend = require('./controller/addFirend');
+const saveRemark = require('./controller/saveRemark');
 const router = new Router();
 
 
@@ -13,7 +14,7 @@ router.post('/getPost', getPost.getPost);
 router.post('/getLatestPosts', getPost.getLatestPost);
 router.post('/getUsers', login.getUsers);
 router.post('/addFriend', addFriend.addFriend);
-
+router.post('/saveRemark', saveRemark.saveRemark);
 
 router.get('/', (ctx) => {
     ctx.body = 'hello';

@@ -1,4 +1,3 @@
-var mongoose = require('mongoose');
 var User = require('../model/User');
 
 const sleep = async (ms) => {

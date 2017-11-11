@@ -27,3 +27,7 @@ export function getUsers(options) {
 export function addFriend(options) {
   return request('/api/addFriend', options);
 }
+
+export function saveRemark(options) {
+  return request('/api/saveRemark', options);
+}
