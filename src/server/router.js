@@ -15,6 +15,9 @@ router.post('/getLatestPosts', getPost.getLatestPost);
 router.post('/getUsers', login.getUsers);
 router.post('/addFriend', addFriend.addFriend);
 router.post('/saveRemark', saveRemark.saveRemark);
+router.post('/saveUserInfo', login.saveUserInfo);
+router.post('/getUserInfo', login.getUserInfo);
+
 
 router.get('/', (ctx) => {
     ctx.body = 'hello';

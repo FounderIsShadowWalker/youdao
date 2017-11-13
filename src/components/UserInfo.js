@@ -1,7 +1,8 @@
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { Radio } from 'antd';
 import { DatePicker } from 'antd';
+import { saveUserInfo, getUserInfo } from '../services/index'
 import moment from 'moment';
 
 import './UserInfo.scss';
@@ -14,7 +15,29 @@ const dateFormat = 'YYYY-MM-DD';
 class UserInfo extends React.Component {
 
     state = {
-        value: 1,
+        birthday: '',
+        introduce: '',
+    }
+
+    componentDidMount() {
+        // this.props.form.setFieldsValue({
+        //     'username': this.props.params.username
+        // })
+
+        getUserInfo({
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: this.props.params.username })
+        }).then((value) => {
+
+            value.data.birthday = moment(value.data.birthday);
+            this.props.form.setFieldsValue({
+                ...value.data
+            })
+        });
     }
 
     onChange = (e) => {
@@ -26,8 +49,21 @@ class UserInfo extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
+            console.log(values);
             if (!err) {
                 console.log('Received values of form: ', values);
+                saveUserInfo({
+                    method: 'post',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(values)
+                }).then((value) => {
+                    if (value.data.data == "success") {
+                        message.info('修改成功');
+                    }
+                })
             }
         });
     }
@@ -47,14 +83,13 @@ class UserInfo extends React.Component {
             },
         };
 
-
         return (
             <div id="userInfo">
                 <div className="spanWrapper">
-                    <span> 编辑个人信息 </span>
+                    <span> 设置个人信息 </span>
                 </div>
                 <div className='contentWrapper'>
-                    <Form onSubmit={this.handleSubmit} className="login-form">
+                    <Form className="login-form">
                         <FormItem
                             {...formItemLayout}
                             label="用户名"
@@ -62,7 +97,7 @@ class UserInfo extends React.Component {
                         >
                             {getFieldDecorator('username', {
                             })(
-                                <Input disabled value={this.props.username} />
+                                <Input disabled />
                                 )}
                         </FormItem>
 
@@ -73,7 +108,7 @@ class UserInfo extends React.Component {
                         >
                             {getFieldDecorator('introduce', {
                             })(
-                                <TextArea placeholder={this.props.introduce} autosize={{ minRows: 3, maxRows: 6 }} disabled />
+                                <TextArea autosize={{ minRows: 3, maxRows: 6 }} />
                                 )}
                         </FormItem>
 
@@ -84,10 +119,10 @@ class UserInfo extends React.Component {
                         >
                             {getFieldDecorator('sex', {
                             })(
-                                <RadioGroup onChange={this.onChange} value={this.state.value} disabled>
-                                    <Radio value={1}>男</Radio>
-                                    <Radio value={2}>女</Radio>
-                                    <Radio value={3}>保密</Radio>
+                                <RadioGroup onChange={this.onChange} >
+                                    <Radio value={'1'}>男</Radio>
+                                    <Radio value={'2'}>女</Radio>
+                                    <Radio value={'3'}>保密</Radio>
                                 </RadioGroup>
                                 )}
                         </FormItem>
@@ -99,28 +134,17 @@ class UserInfo extends React.Component {
                         >
                             {getFieldDecorator('birthday', {
                             })(
-                                <DatePicker value={this.props.birthday} disabled />
-                                )}
-                        </FormItem>
-
-                        <FormItem
-                            {...formItemLayout}
-                            label="生日"
-                            hasFeedback
-                        >
-                            {getFieldDecorator('birthday', {
-                            })(
-                                <DatePicker value={this.props.birthday} disabled />
+                                <DatePicker value={this.state.birthday} />
                                 )}
                         </FormItem>
                     </Form>
 
                     <div className="buttonGroup">
-                        <Button type="primary" className="confirm" disabled>确认</Button>
+                        <Button type="primary" className="confirm" onClick={this.handleSubmit}>确认</Button>
                     </div>
 
                     <div className="avator" style={{ backgroundImage: `url(./she.jpg)` }}>
-                        <Button type="primary" disabled>确认</Button>
+                        <Button type="primary">确认</Button>
                     </div>
                 </div>
             </div >
@@ -129,20 +153,12 @@ class UserInfo extends React.Component {
 }
 
 export default Form.create({
-    mapPropsToFields(props) {
-        return {
-            username: {
-                value: 'shadowWalker'
-            },
-            introduce: {
-                value: '我是风是自由的风'
-            },
-            sex: {
-                value: 1
-            },
-            birthday: {
-                value: moment('2015-06-06', dateFormat)
-            }
-        }
-    }
+    // mapPropsToFields(props) {
+    //     console.log(props);
+    //     return {
+    //         username: {
+    //             value: props.username
+    //         }
+    //     }
+    // }
 })(UserInfo);

@@ -32,5 +32,15 @@ module.exports = {
     async getUsers(ctx, next) {
         let result = await User.getUsers({ username } = ctx.request.body);
         ctx.body = result;
+    },
+
+    async getUserInfo(ctx, next) {
+        let result = await User.getUsers({ username } = ctx.request.body);
+        ctx.body = result[0];
+    },
+
+    async saveUserInfo(ctx, next) {
+        let result = await User.saveUserInfo({ username, introduce, sex, birthday } = ctx.request.body)
+        ctx.body = result;
     }
 }

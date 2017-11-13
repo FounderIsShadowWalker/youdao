@@ -9,6 +9,9 @@ var UserSchema = new Schema({
     password: String,
     phone: String,
     email: String,
+    introduce: String,
+    birthday: String,
+    sex: String,
     friendList: [],
     messages: [],
     //posts : [{type: Schema.Types.ObjectId, ref:'Post'}]
@@ -90,8 +93,9 @@ UserSchema.statics = {
     },
 
     async getUsers(username) {
+
         let result = await db.model('User')
-            .find({ username: JSON.parse(username).username }, { _id: 0, messages: 0, _v: 0, password: 0, friendList: 0 },
+            .find({ username: username.username || JSON.parse(username).username }, { _id: 0, messages: 0, _v: 0, password: 0, friendList: 0 },
             (err, doc) => {
                 if (err) {
                     console.log(err);
@@ -147,7 +151,20 @@ UserSchema.statics = {
         });
 
         return result;
+    },
 
+    async saveUserInfo({ username, introduce, sex, birthday }) {
+
+        let result = await new Promise((resolve, reject) => {
+            db.model('User').update({ username }, { $set: { introduce, sex, birthday } }, (err, doc) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    resolve('true')
+                }
+            })
+        });
+        return { data: 'success' };
     }
 };
 

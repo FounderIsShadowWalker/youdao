@@ -25,7 +25,7 @@ class UserMenu extends React.Component {
 
 
     modifyUserInfo = () => {
-        hashHistory.push(`/UserPage/${this.props.username}/userInfo`);
+        hashHistory.push(`/UserPage/${this.props.username}/userInfo/`);
     }
 
     render() {

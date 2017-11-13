@@ -69,6 +69,9 @@ Antd mongodb koa2 dva sass socket.io
     
    node index.js							
 
+   打包 git run bild
+
+   启动 cd server.js	
 
 ## 来个截图吧
 ![qq_space](http://oymaq4uai.bkt.clouddn.com/qq_space_overview)
