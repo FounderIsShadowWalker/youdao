@@ -6,6 +6,20 @@
 
 Antd mongodb koa2 dva sass socket.io
 
+## 主要功能
+    1. follow 
+
+		按qq号关注
+	
+	2. post
+
+		发帖
+
+	3. remark		  	
+ 
+		评论这个有点坑，当前评论的用户发出的评论会通知post方，而不会通知给其他评论的用户
+
+		这个之后再改吧 －－＃。
 
 ## 目录结构
 + public
